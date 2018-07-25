@@ -87,13 +87,13 @@ def main():
                 arguments.width,
                 arguments.scale
             )
-            if path_to_results is None:
-                path_to_results = get_path_to_changed(
-                    arguments.original,
-                    result_size
-                )
             new_image = resize_image(original_im, result_size)
-            new_image.save(path_to_results)
+        if path_to_results is None:
+            path_to_results = get_path_to_changed(
+                arguments.original,
+                result_size
+            )
+        new_image.save(path_to_results)
     except IOError:
         exit("Error: file {}  not found or opened".format(arguments.original))
     if not uniformity:
