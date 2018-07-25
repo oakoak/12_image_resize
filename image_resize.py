@@ -66,7 +66,7 @@ def get_path_to_changed(path_to_original, size):
     return path_to_results
 
 
-if __name__ == '__main__':
+def main():
     arguments = get_parser_args()
     path_to_results = arguments.results
     if arguments.height == 0 and arguments.width == 0:
@@ -85,3 +85,7 @@ if __name__ == '__main__':
         exit("Error: file {}  not found or opened".format(arguments.original))
     if not uniformity:
         print("The image was not changed proportionally")
+
+
+if __name__ == '__main__':
+    main()
