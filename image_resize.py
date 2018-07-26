@@ -9,8 +9,7 @@ def resize_image(initial_image, result_size):
 
 def get_final_size(original_height, original_width, height, width, scale):
     if height != 0 and width != 0:
-        proportionally = (original_height/height ==
-                          original_width/width)
+        proportionally = (original_height*width == original_width*height)
         return (height, width), proportionally
     if scale != 0:
         height = int(original_height * scale)
@@ -68,20 +67,20 @@ def get_path_to_changed(path_to_original, size):
     return path_to_results
 
 
-def arguments_validation(height, width, scale):
+def validation_of_arguments(height, width, scale):
     if height == 0 and width == 0 and scale == 0:
         return"You have not entered the final size"
     if height < 0 or width < 0 or scale < 0:
         return "You input incorrect values"
     if scale != 0 and (height != 0 or width != 0):
         return "You input incompatible arguments"
-    return ""
+    return None
 
 
 def main():
     arguments = get_parser_args()
     path_to_results = arguments.output
-    error_validation = arguments_validation(
+    error_validation = validation_of_arguments(
             arguments.height,
             arguments.width,
             arguments.scale
